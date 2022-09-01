@@ -16,7 +16,8 @@ class Window:
         self.date_entry.grid(row=0, column=1)
         self.date_entry.focus()
 
-        self.local = "2022-08-31"
+        self.local = ""
+        self.currency_local = ""
 
         def add_date():
             self.local = self.date_entry.get()
@@ -26,6 +27,7 @@ class Window:
 
         def set_today():
             self.date_entry.insert(0, f"{dt.datetime.now():%Y-%m-%d}")
+            self.local = self.date_entry.get()
 
         self.date_today_button = tkinter.Button(text="Today", command=set_today)
         self.date_today_button.grid(row=0, column=3)
@@ -35,6 +37,7 @@ class Window:
 
         def show():
             self.label.config(text=self.clicked.get())
+            self.currency_local = self.label.cget("text")
 
         self.options = [
             "AUD",
@@ -65,5 +68,12 @@ class Window:
 
         self.label = tkinter.Label(self.window, text="")
         self.label.grid(row=2, column=2)
+
+        def show_results():
+            self.canvas = tkinter.Canvas(self.window, bg="white", width=200, height=200)
+            self.canvas.grid(row=4, column=1)
+
+        self.show_button = tkinter.Button(text="Show", command=show_results)
+        self.show_button.grid(row=3, column=0, columnspan=2)
 
         self.window.mainloop()
