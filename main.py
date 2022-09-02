@@ -14,6 +14,7 @@ response.raise_for_status()
 
 
 data = response.json()
+
 kup_tecaj = ""
 sred_tecaj = ""
 prod_tecaj = ""
@@ -24,4 +25,10 @@ for num in range(len(data)):
         sred_tecaj = data[num]['srednji_tecaj']
         prod_tecaj = data[num]['prodajni_tecaj']
 
-print(kup_tecaj, sred_tecaj, prod_tecaj)
+
+a.kup_tecaj = kup_tecaj
+a.sred_tecaj = sred_tecaj
+a.prod_tecaj = prod_tecaj
+
+
+print(f" Kupovni tecaj: {a.kup_tecaj},\n Srednji tecaj: {a.sred_tecaj},\n Prodajni tecaj: {a.prod_tecaj}\n")

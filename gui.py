@@ -5,9 +5,13 @@ import datetime as dt
 class Window:
 
     def __init__(self):
+        self.kup_tecaj = "kup_tecaj"
+        self.sred_tecaj = "sred_tecaj"
+        self.prod_tecaj = "prod_tecaj"
+
         self.window = tkinter.Tk()
         self.window.title("HNB API")
-        self.window.geometry("400x400")
+        self.window.geometry("400x450")
 
         self.date = tkinter.Label(text="Date (YYYY-MM-DD): ", pady=10, padx=10)  # ISO 8601 standard
         self.date.grid(row=0, column=0)
@@ -68,12 +72,5 @@ class Window:
 
         self.label = tkinter.Label(self.window, text="")
         self.label.grid(row=2, column=2)
-
-        def show_results():
-            self.canvas = tkinter.Canvas(self.window, bg="white", width=200, height=200)
-            self.canvas.grid(row=4, column=1)
-
-        self.show_button = tkinter.Button(text="Show", command=show_results)
-        self.show_button.grid(row=3, column=0, columnspan=2)
 
         self.window.mainloop()
